@@ -113,6 +113,6 @@ if ($_POST) // Check to see if the form has been posted to
   // If the form has been posted allow them through.
   sendAuthorization($_SESSION['id'], '480');
 } else {
-  echo "A valid username or password was not found."
+  echo "A valid username or password was not found.";
 }
 ?>
