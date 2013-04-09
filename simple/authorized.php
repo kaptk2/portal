@@ -36,6 +36,9 @@
 // Start the session to get access to the saved variables
 session_start();
 
+ // Inclued the config file
+require_once("config.php");
+
 function sendAuthorization($id, $minutes)
 {
   global $unifiServer;
@@ -103,9 +106,9 @@ function sendAuthorization($id, $minutes)
   curl_setopt($ch, CURLOPT_URL, $unifiServer.'/logout');
   curl_exec ($ch);
   curl_close ($ch);
-  //header("Location: success.php");
-  sleep(8); // Small sleep to allow controller time to authorize
-  header('Location: '.$_SESSION['url']);
+  echo "Login successful, go to <a href='".$_SESSION['url']"'>$_SESSION['url']</a>";
+  //sleep(8); // Small sleep to allow controller time to authorize
+  //header('Location: '.$_SESSION['url']);
 }
 
 if ($_POST) // Check to see if the form has been posted to
