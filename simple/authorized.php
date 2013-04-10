@@ -106,7 +106,7 @@ function sendAuthorization($id, $minutes)
   curl_setopt($ch, CURLOPT_URL, $unifiServer.'/logout');
   curl_exec ($ch);
   curl_close ($ch);
-  echo "Login successful, go to <a href='".$_SESSION['url']."'>$_SESSION['url']</a>";
+  echo "Login successful, I should redirect to: " . $_SESSION['url'];
   //sleep(8); // Small sleep to allow controller time to authorize
   //header('Location: '.$_SESSION['url']);
 }
