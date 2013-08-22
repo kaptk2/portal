@@ -54,7 +54,7 @@ function authorizeMySQL($username, $password)
   mysql_select_db($dbName) or die(mysql_error());
 
   // Check to see if the username and password exist in the table
-  $result = mysql_query('SELECT expires FROM guests WHERE \
+  $result = mysql_query('SELECT expires FROM guests WHERE
             username="'.$username.'" AND password="'.$password.'"');
 
   $count = mysql_num_rows($result);
