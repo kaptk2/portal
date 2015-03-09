@@ -12,41 +12,36 @@ installed for PHP.
 
 Files
 -----------------------------------------
-There are three examples included.
+There are two examples included.
   * Simple is most basic form, this can be used as a jumping off point
     to making your own more complex portal.
-  * MySQL contains a way to store uses in an external database
-  * MySQL + LDAP is a more complex example. It contains a way to
-    authorize a user from either MySQL or LDAP
+  * SQL contains a way to store uses in an external database using
+    sqlite. It is written using PDO so switching database types is
+    trivial.
+
 
 
 Installation
 -----------------------------------------
-For the simple example just edit the index.php file and point it to
-your own URL. You will also need to edit config.php and enter in your
-unifi controller details.
+For the simple example just edit the authorize.php file and enter in
+your UniFi controller details. You can change the index.php file as you
+see fit. Just leave the php at the top of the file alone.
 
-For the MySQL in addtion to editing index.php you will need to edit
-config.php and create a database. See tables.sql for an example table
-layout
-
-For MySQL and LDAP edit index.php and config.php entering the
-appropriate details. You will also need to create a database like what 
-is outlined in the MySQL example.
+For the SQL example in addtion to editing index.php you will need to
+edit config.php. The config settings are all at the top of the file. To
+initilize a database just visit the /manager section and a database will
+be created for you, assuming the web server has write permission to the
+database folder.
 
 
 How it works
 -----------------------------------------
-The code is pretty straight forward. Index.php redirects to a log in 
-page this just makes sure the url looks pretty and is not just a 
-confusing looking IP address. Login.php is just a basic form. It 
-captures the GET variables passed by the unifi controller and store 
-them in PHP session variables. Authorized.php is the heart of the 
-authentication. In addition to check for valid users and passwords it 
-interacts with the unifi controller API using CURL. Once the CURL post 
-is made it sleeps for a short while to give time for the controller to 
-authorize the client then redirects the client to their original 
-destination.
+The code is pretty straight forward. The initial page captures the GET
+variables passed by the unifi controller and stores them as PHP session
+variables. The core functionality of the interacts with the unifi
+controller API using CURL. Once the CURL post is made it sleeps for a
+short while to give time for the controller to authorize the client then
+redirects the client to their original destination.
 
 Bugs
 -----------------------------------------
@@ -55,7 +50,8 @@ https://github.com/kaptk2/portal
 
 License
 -----------------------------------------
-Copyright (c) 2012, Andrew Niemantsverdriet
+
+Copyright (c) 2015, Andrew Niemantsverdriet
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

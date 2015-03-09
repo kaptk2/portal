@@ -1,7 +1,0 @@
-CREATE TABLE guests (
-  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  expires VARCHAR(12),
-  notes TEXT
-);

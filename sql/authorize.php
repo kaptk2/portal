@@ -33,41 +33,24 @@
  * either expressed or implied, of the FreeBSD Project.
 */
 
-// Start a session to capure the id and url of the incomming connection
-session_start();
+require_once('./config.php');
 
-// Setup the session variables and display errors if not set
-if ($_GET['id']) {
-  $_SESSION['id'] = $_GET['id'];
-} else {
-  echo "Direct Access is not allowed";
-  exit();
+if ($_POST) { // Check to see if the form has been posted to
+  // Set and sanitze the posted variables
+  $user = preg_replace("/[^a-zA-Z0-9.]/", "", $_POST['username']);
+  $pass = $_POST['password'];
+
+  if ($_POST['terms'] == 'yes') {
+    // See if the user exists in SQL
+    if (authorizeSQL($user, $pass)) {
+      sendAuthorization($_SESSION['id'], '480', $unifi);
+      echo "<script type='text/javascript'>$(location).attr('href','".$_SESSION['url']."');</script>";
+      echo ("Successfuly Connected");
+    } else {
+      echo "Couldn't authorize user please try again or use the contact form for additional assistance.";
+    }
+  } else {
+    echo "You must accept the terms of service";
+  }
 }
-
-if ($_GET['url']) {
-  $_SESSION['url'] = $_GET['url'];
-} else {
-  $_SESSION['url'] = 'http://www.google.com';
-}
-
-// Display the login form
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <title>Free Wireless Internet</title>
-  </head>
-  <body>
-    <div id="page" align="center">
-      <div id="header">
-        <div id="companyname" align="left">Welcome!</div>
-      </div>
-      <br />
-      <form method=POST action="authorize.php">
-        By clicking submit you agree to the terms of service.
-        <br />
-        <input name="submit" type="submit" value="Submit">
-      </form>
-    </div>
-  </body>
-</html>
