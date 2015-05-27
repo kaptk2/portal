@@ -153,6 +153,8 @@ function authorizeSQL($username, $password) {
 function sendAuthorization($id, $minutes, $unifi) {
   // Start Curl for login
   $ch = curl_init();
+  // Return output instead of displaying it
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
   // We are posting data
   curl_setopt($ch, CURLOPT_POST, TRUE);
   // Set up cookies
