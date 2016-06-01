@@ -87,6 +87,6 @@ function sendAuthorization($id, $minutes, $unifi) {
 
 if ($_POST) {
   // If the form has been posted allow them through.
-  sendAuthorization($_SESSION['id'], '480');
+  sendAuthorization($_SESSION['id'], '480', $unifi);
 }
 ?>
