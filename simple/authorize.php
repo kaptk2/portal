@@ -48,6 +48,8 @@ function sendAuthorization($id, $minutes, $unifi) {
   $ch = curl_init();
   // We are posting data
   curl_setopt($ch, CURLOPT_POST, TRUE);
+  // Hide output
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   // Set up cookies
   $cookie_file = "/tmp/unifi_cookie";
   curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
@@ -82,11 +84,13 @@ function sendAuthorization($id, $minutes, $unifi) {
   curl_exec ($ch);
   curl_close ($ch);
 
-  sleep(6); // Small sleep to allow controller time to authorize
+  sleep(3); // Small sleep to allow controller time to authorize
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // If the form has been posted allow them through.
   sendAuthorization($_SESSION['id'], '480', $unifi);
+  header('Location: https://www.google.com', true, 302);
+  exit;
 }
 ?>
