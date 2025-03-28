@@ -16,8 +16,9 @@ installed for PHP.
 
 Forked and little bit reworked version
 -----------------------------------------
-Blogpost about UniFi External Captive Portal research 
+Blogpost about UniFi External Captive Portal research
   * https://blog.alan.lt/2021/02/first-look-on-unifi-wireless-access.html
+Forked version
   * https://github.com/alan-lt/unifi-guest-portal
 Main functions
   * Users in SQL
