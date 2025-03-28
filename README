@@ -14,6 +14,15 @@ scripts from the internet at large due to the security implications.
 This is a pure PHP solution and just requires that the curl module is 
 installed for PHP.
 
+Forked and little bit reworked version
+-----------------------------------------
+Blogpost about UniFi External Captive Portal research 
+  * https://blog.alan.lt/2021/02/first-look-on-unifi-wireless-access.html
+  * https://github.com/alan-lt/unifi-guest-portal
+Main functions
+  * Users in SQL
+  * Users in LDAP (Google Workspace)
+  * AdminLTE Template
 
 Files
 -----------------------------------------
@@ -23,8 +32,6 @@ There are two examples included.
   * SQL contains a way to store uses in an external database using
     sqlite. It is written using PDO so switching database types is
     trivial.
-
-
 
 Installation
 -----------------------------------------
@@ -37,7 +44,6 @@ edit config.php. The config settings are all at the top of the file. To
 initilize a database just visit the /manager section and a database will
 be created for you, assuming the web server has write permission to the
 database folder.
-
 
 How it works
 -----------------------------------------
